@@ -1,0 +1,74 @@
+1 - Sean a,n enteros mayores que 1. Pq si a^n - 1 es primo => a = 2 y n es primo.
+
+Sea la descomposicion a^n - 1 = (a - 1) * (a^n-1 + a^n-2 + .... + a + 1) por tanto a - 1 es 2 => a=2.
+
+Supongamos que n no es primo => n = p*q con p,q > 1, entonces a^n - 1 = (a^p - 1) * (a^p(q - 1) + a^p(q - 2) + ... + a^p*2 + a^p + 1), con lo cual (a^p - 1) = 1 => p-1 = 0 => p = 1.
+
+-----------------------------------------------------------
+
+2 - Sean a,n enteros mayores que 1. Pq si a^n + 1 es primo => a es par y n es una potencia de 2.
+
+Que a sea par es straightforward (impar + par es impar).
+
+Supongamos que n = p*q con q impar y p par, entonces a^n + 1 = (a^p + 1)*(a^p*(q - 1) - a^p*(q - 2) + ... - a^p + 1), con lo cual es facil notar que a^n + 1 sea primo a^p + 1 debe ser igual a 1, lo cual es imposible, por tanto n no puede tener descomposicion en algun factor impar.
+
+-----------------------------------------------------------
+
+3 - Pq existe un bloque de 2022 enteros consecutivos donde hay exactamente 15 primos.
+
+Construyamos el conjunto A(n) = {1 + n, 2 + n, ... , 2022 + n} en el cual, para un valor de n tenemos 2022 numeros consecutivos. Notese que para A(1) tenemos mas de 25 primos en el conjunto.
+
+Probemos que existe un n tal que en el conjunto no hay primos. Sea p un entero, notese que al sumarle a p! + 1 una cantidad k con 0 < k < p+1 podremos sacar factor comun k porque p! contiene como factor todos los numeros hasta k, entonces habremos encontrado un bloque de p-1 numeros consecutivos compuestos. Siguiendo esta logica podemos construir un bloque de 2022 numeros compuestos consecutivos simplemente teniendo como primer numero 2023!+1, o sea A(2023!+1).
+
+Vease que cada vez que en A incrementamos n, como lo que estamos haciendo es eliminando el primer elemento y adicionando uno al final (en caso que lo tengamos en orden cresciente) lo que esta ocurriendo es que la cantidad de primos en el conjunto se mantiene constante, disminuye en 1 o aumenta en 1. 
+
+Demostremos que dado un conjunto de m numeros Q = {q1, q2, ..., qm}, si la diferencia modular entre cada termino consecutivo es a lo sumo 1, entonces Q contiene a todos los elementos entre q1 y qm. Procedamos por induccion:
+i) Para m = 2 y 3 se cumple
+ii) Supongamos que para m = k se cumple
+iii) Para m = k+1 ocurre que el conjunto podemos dividirlo en q1,q2,...,qk y qk+1, en el 1er grupo por hipotesis de induccion al conjunto pertenecen todos los numeros entre q1 y qk, y como la diferencia modular entre qk y qk+1 es a lo sumo 1 eso significa que entre qk y qk+1 estan todos los numeros enteros entre ellos => en el conjunto Q estarian todos los elementos entre q1 y qk+1, por tanto se cumple lo que queriamos demostrar.
+
+Luego, inicialmente tenemos mas de 25 primos, en cada incremento la cantidad varia en 1 o no y existe un n para el cual hay cero primos, eso significa que la primalidad para algun valor de n va a tomar el valor 15.  
+
+-----------------------------------------------------------
+
+4 - Sean a,n,m enteros  positivos y a>1. Pq mcd(a^n - 1, a^m -1) = a^mcd(n,m) - 1.
+
+Sea d = mcd(a^n - 1, a^m -1), entonces d | a^n - 1 - (a^m -1) => d | a^n - a^m. Supongamos SPG que n > m, n = m*q1 + r1, entonces a^m * (a^m*(q1-1)+r1 - 1), como d|a^m - 1  => mcd(a^m - 1, a^m) = 1 => d|a^m*(q1-1)+r1 - 1.
+
+Repitiendo este proceso continuando con a^m*(q1-1)+r1 - 1 y a^m - 1 resulta que d|a^r1 - 1, y si lo volvemos a aplicar con a^m - 1 y a^r1 - 1 obtendremos un r2, r3 y asi sucesivamente hasta que por el metodo de la division de Euclides resulta que d|a^mcd(n,m) - 1 que es lo que queriamos probar.
+
+-----------------------------------------------------------
+
+5 - Sean n entero mayor que 4. Pq n|(n-1)! <=> n es compuesto
+La demostracion n|(n-1)! => n es compuesto es straightforward, ya que si n fuera primo => n es coprimo con todo numero menor que el, y por tanto no divide a (n-1)!.
+
+Demostremos que si n es compuesto => n|(n-1)!.
+Sea n = a*b con a,b > 1 y n > a,b entonces:
+Si a != b => a,b pertenecen a {1,2,...,n-1} y por tanto n|(n-1)!
+Si a = b entonces probemos que n = a^2 > 2*a, esto ocurre si a > 2, entonces para todo n > 4 se cumple, que es lo que queriamos probar.
+
+-----------------------------------------------------------
+
+6 - Se define la secuencia p1,p2,...,pn para todo n>1 de la siguiente forma, p1 = 2 y pn es el mayor primo que divide a p1*p2*...*pn-1 + 1. Pq 5 no esta en la secuencia.
+
+Sea S = {p1, p2, ..., pn} la secuencia de los pi que cumplen la condicion y A(i) = p1*p2*...*pi + 1, entonces:
+A(1) = 2    p1 = 2
+A(2) = 3    p2 = 3
+A(3) = 7    p3 = 7
+A(4) = 43
+Notese que si existe k tal que 5 cumple la condicion en A(k) entonces A(k) = 5*t siendo t un numero compuesto por primos menores que 5 (o sea, 2 y 3), pero como p1 = 2 y p2 = 3 entonces A(k) es coprimo con 2 y 3, lo cual indica que t o es una potencia de 5 o es divisible entre un primo mayor que 5, lo cual no puede ser.
+
+Supongamos que t es una potencia de 5 entonces A(k) = 5^r, entonces 5^r = 2*3*...*pn + 1 al restar 1 a ambos miembros tenemos que 5^r - 1 = 2*3*...*pn, pero 5^r - 1 = (5 - 1)(5^r-1 + ... + 1) entoces 5^r - 1 es divisible entre 4 y 2*3*...*pn no, por tanto tampoco puede ser.
+
+
+
+
+
+
+
+
+
+
+
+
+

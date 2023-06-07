@@ -1,0 +1,25 @@
+1 - Sea a entero con a != 0 y ci entero para 0 <= i <= n. Prueba que si a\ci => a\c1*x1 + c2*x2 + ... + cn*xn para x1,x2,...,xn enteros cualesquiera.
+
+------------------------------------------------
+
+2 - Sea k entero positivo. Demuestra que k divide a todo producto de k enteros consecutivos.
+
+------------------------------------------------
+
+3 - Sea n entero positivo. Demuestra que existen infinitos multiplos de n que contienen los 10 digitos decimales.
+
+-----------------------------------------------
+
+4 - Un entero n > 1 es especial si todo numero menor que n se puede expresar como suma de divisores distintos de n. Prueba que si p y q son especiales => p*q es especial
+
+-----------------------------------------------
+
+5 - Demuestra que si p^2 + 2 y p son primos => p^3 + 2 es primo
+
+-----------------------------------------------
+
+6 - Determine los valores positivos de n para los cuales n^4 + 4 es primo
+
+-----------------------------------------------
+
+7 - Determine el numero de formas de descomponer a en sumandos donde el orden no es relevante y la diferencia modular de cualquier par de sumandos es a lo sumo 1.

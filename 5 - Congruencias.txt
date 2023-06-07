@@ -1,0 +1,50 @@
+2 - Prueba que es finita la cantidad de numeros k tal que la sumatoria de k! es un cuadrado perfecto.
+
+Llamemos S(t) a la sumatoria de k! hasta t. Notese que S(1) = 1 cumple, S(2) = 3 no, S(3) = 9 cumple, S(4) = 33 no, S(5) = 153 no cumple, S(6) = 873 tampoco.
+
+Para t >= 7 tenemos que los terminos i! en la sumatoria a partir de 7! seran divisibles entre 7, entonces la congruencia de S(t) mod(7) no va a variar. Como los cuadrados perfectos solo dejan resto 1, 4, 2 , 0 mod(7) y S(6) deja resto 5 para t > 6 no existe t.
+
+-----------------------------------------------------
+
+3 - Prueba que las siguientes ecuaciones no tienen solucion:
+
+a) 3x^2 + 5 + 9xy = y^2
+La ecuacion puede transformarse en 3x(x + 3y) = y^2 - 5. Notese que 3x(x + 3y) = 0 mod(3), por tanto y^2 - 5 = 0 mod(3) => y^2 = 5 mod(3) => y^2 = -1 mod(3) lo cual es imposible porque los cuadrados son congruentes con 0 o 1 mod(3)
+
+b) x^4 - 5x^3 + 30x^2 = 18
+La ecuacion puede transformarse en x^2(x^2 - 5x + 30) = 18. Notese que 18 = 3 mod(5) y como todo cuadrado es congruente con 0, 1 0 -1 mod(5) entonces x^2(x^2 - 5x + 30) = x^2(x^2) mod(5) y x^4 = 0, 1 mod(5) lo cual genera una contradiccion
+
+c) x^2 + y^2 - 8z = 6, esta ecuacion no es necesario ni transformarla, 6 = 6 mod(8), 8z = 0 mod(8) y como los cuadrados son congruentes con 0,1,4 mod(8) entonces x^2 + y^2 = 0,2 mod(8) contradiccion
+
+-------------------------------------------------------
+
+4 - Demuestre que dados 3 numeros cualesquiera enteros siempre es posible seleccionar dos tal que a^3 * b - a * b^3 es divisible por 10.
+
+Notese que a^3 * b - a * b^3 = ab(a - b)(a + b), y que cualquier numero x = 0, 1, 2, -2, -1 mod(5). Hagamos el siguiente analisis:
+. Para que sea divisible entre 10 debe ser divisible por 2 y 5 simultaneamente, y la expresion ab(a - b)(a + b) es evidente que para cualquier a,b es par.
+. Si tomamos como uno de los tres numeros a seleccionar x = 0 mod(5) es trivial que el resultado sera divisile por 5, luego, seleccionando otros 3 restos distintos de cero tenemos las posibilidades 1,2,-2,-1, de los cuales por Principio de las Casillas tendremos que tomar un numero y su opuesto, donde el factor a + b en la expresion ab(a - b)(a + b) resulta en cero, lo cual demuestra la orden del ejercicio.
+
+-------------------------------------------------------
+
+5 - Un numero es de Fermat si es 2^2^n + 1 para todo n >= 0. Prueba que todos los numeros de Fermat son primos relativos dos a dos. Prueba que hay infinitos primos con esta demostracion.
+
+Tenemos los numeros 2^2^r + 1 y 2^2^s + 1. Supongamos que existe un numero p que divide a 2^2^r + 1 y a 2^2^s + 1, entonces 2^2^r = -1 mod(p), sin perdida de generalidad s > r, luego al elevar 2^2^r al cuadrado s - r veces resulta que 2^2^s = 1 mod(p), lo cual es una contradiccion porque 2^2^s = -1 mod(p)
+
+-------------------------------------------------------
+
+6 - Halla a,b,c tal que 2^a + 2^b = c!
+
+Notese que 2^a + 2^b = 2^b * (2^b1 + 1) suponiendo que a = b + b1 con b1 > 0, o sea a > b, luego para c >= 7 tenemos que c! = 0 mod(7) y cualquier potencia de 2 es congruente con 1,2,4 mod(7), luego no existe ninguna distribucion de esos restos que cumpla que  2^b * (2^b1 + 1) = 0 mod(7). Para c < 7 probando llegamos a que son soluciones (0,0,2) y (4,3,4)
+
+
+
+
+
+
+
+
+
+
+
+
+

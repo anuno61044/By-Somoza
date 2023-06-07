@@ -1,0 +1,74 @@
+1 - Sean a, b1, b2, ..., bn enteros con a != 0. Prueba que si a\b1*b2*...*bn y a es primo relativo con todos los bi excepto bn, entonces a\bn.
+
+Procedamos por induccion:
+i) para n = 2: Si a \ b1*b2 y mcd(a,b1) = 1 => a\b2
+Notese que existen x,y tales que mcd(x,y) = 1 y a*x + b1*y = 1 porque mcd(a,b1) = 1, al multiplicar por b2 queda que a*b2*x + b1*b2*y = b2, pero como a\a*b2 y a\b1*b2 por datos => a\b2
+ii) Supongamos que para n = k se cumple que a\b1*b2*...*bk y a es primo relativo con todos los bi excepto bk, entonces a\bk
+iii) Para n = k+1 se cumple que: como a es coprimo con b1,b2 => a es coprimo con b1*b2. Demostremoslo.
+si mcd(a,b1) = 1 => existen x,y tal que a*x + b1*y = 1 => a*b2*x + b1*b2*y = b2, como mcd(b2,a) = 1 y a\a*b2 => a no divide a b1*b2.
+Entonces sea b1*b2 = t1, luego b1*b2*...*bk*
+
+------------------------------------------------
+
+2 - Prueba que mcd(n,6) = 1 => n^2 - 1 es divisible por 24.
+
+n^2 - 1 = (n-1) * (n+1) tanto n-1 como n+1 son pares porque mcd(n,6) = 1, y como son pares consecutivos uno es multiplo de 2 y otro multiplo de 4, pero como mcd(n,6) = 1 => n = 1,-1 mod(6), entre n-1 y n+1 uno es divisible entre 6 => uno es divisible entre 3 => n^2 + 1 es divisible entre 8*3 = 24.
+
+--------------------------------------------------
+
+3 - Sean a,b enteros con b != 0. Prueba que si a = b*q + r para algun q,r => mcd(a,b) = mcd(b,r).
+
+Supongamos lo contrario, que mcd(a,b) = d1 y mcd(b,r) = d2 con d1 > d2. Entonces como mcd(a,b) = d1 => d1\r, pero si d1\r y d1\b entonces d1\mcd(b,r) lo cual es falso porque d1 > d2.
+
+--------------------------------------------------
+
+4 - Sean a1, a2, ..., an enteros no todos ceros. Prueba que mcd(a1,a2,...,an) = mcd(a1,mcd(a2,...,an)).
+
+Sea mcd(a1,a2,...,an) = d, entonces existen x1, x2, ..., xn con mcd(x1,x2,...,xn) = 1 tales que a1*x1 + a2*x2 + ... + an*xn = d. Notese que si mcd(x2,x3,...,xn) = d1 y sacamos factor comun d1 resulta en a1*x1 + (a2*x21 + a3*x31 + ... + an*xn1)*d1 = d, y como mcd(x2,x3,...,xn) = d1 => mcd(x21,x31,...,xn1) = 1 por lo que a2*x21 + a3*x31 + ... + an*xn1 = mcd(a2,...,an), entonces a1*x1 + mcd(a2,...,an)*d1 = d. 
+
+Probemos que mcd(x1,d1) = 1, o sea, si d1 \ una lista p1,p2...pn de numeros y mcd(p1,p2,...,pn,x1) = 1 => mcd(x1,d1) = 1. No es dificil darse cuenta que si mcd(x1,d1) = a con a != 1 entonces a\p1,p2...pn y a\x1, por lo cual mcd(p1,p2,...,pn,x1) = a,contradiccion.
+
+Por tanto a1*x1 + mcd(a2,...,an)*d1 = d donde mcd(x1,d1) = 1, entonces d = mcd(a1,mcd(a2,...,an)) = mcd(a1,a2,...,an).
+
+------------------------------------------------
+
+5 - Sean a,b enteros no cero los dos y k entero. Prueba que mcd(k*a,k*b) = k * mcd(a,b).
+
+Como mcd(k*a,k*b) = d entonces existen x,y enteros con mcd(x,y) = 1 tal que k*a*x + k*b*y = d => k * (a*x + b*y) = d y como mcd(x,y) = 1 => k * mcd(a,b) = d = mcd(k*a,k*b).
+
+----------------------------------------------
+
+6 - Halla el menor entero n compuesto que no es divisible por ninguno de los primeros k primos.
+
+Como n es compuesto => n = a*b con a,b > 1. Notese que para que n no sea divisible por ninguno de los 1ros k primos debe cumplirse que ni a ni b sean divisibles por estos primos => a,b >= pk+1, por lo cual, el menor numero que lo cumple debe ser (pk+1)^2 
+
+--------------------------------------------
+
+7 - Prueba que para todo n mayor que 2 se cumple que existe p primo tal que n < p < n!
+
+Notese que para n > 2 entre n y n! existen numeros, luego como n! = 1*2*3*...*n => n! - 1 es coprimo con cada numero menor igual que n, por tanto, n! - 1 es primo o es divisible entre un primo mayor que n pero menor que n!
+
+----------------------------------------------
+
+8 - Sea pn el n-esimo primo. Prueba que pn <= 2^2^n-1
+
+Primero demostremos que el producto de todos los n-1 primos anteriores a pn es mayor que el. Notese que esto se cumple para n > 2 ya que teniendo p1*p2*...*pn-1 - 1 este numero es mayor o igual que el n-esimo primo porque tiene un divisor primo distinto de los pi hasta n-1. Luego pn < p1*p2*...*pn-1 < 2^(2^n-2 + 2^n-3 + .... + 1) = 2^(2^n-1 - 1) < 2^2^n-1 que es lo que queria probar
+
+-----------------------------------------------
+
+9 - Sean a,b enteros, mcd(a,b) = 1 y n entero positivo. Calcule:
+a) mcd(a + b, a * b)
+b) mcd(a + b, a - b)
+c) mcd(a + b, a^2 + b^2)
+d) mcd(n^2 + 1, (n+1)^2 + 1)
+
+
+
+
+
+
+
+
+
+
+
