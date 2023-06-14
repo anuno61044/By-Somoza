@@ -49,7 +49,7 @@ Si el elemento cumple $t$ propiedades, con $t \gt r$ ocurre que en $S_{k+r}$ hay
 
 Analicemos ahora $(^{k+r}_r)(^t_{k+r})$ para llevarlo a una forma más simple, pensemos la siguiente situación: tenemos $t$ trabajadores de una empresa y queremos hacer grupos de $k+r$, pero en cada grupo que hagamos queremos saber de cuántas formas podemos seleccionar $r$ delegados para asistir a una reunión, esto es evidente que podemos hacerlo de $(^t_{k+r})(^{k+r}_r)$ formas, lo cual es equivalente a que de los $t$ trabajadores seleccionemos $r$ delegados para asistir a la reunión y de los $t-r$ restantes sacar los grupos de trabajadores que estos representarán en la reunión, y esto puede hacerse de $(^t_r)(^{t-r}_{k})$.
 
-Con la nueva expresión la fórmula quedaría $N(r)=\sum^{t-r}_{k=0}(-1)^k(^t_r)(^{t-r}_{k})$, y como la sumatoria no depende de $r \implies N(r)=(^t_r)\sum^{t-r}_{k=0}(-1)^k(^{t-r}_{k})$ y esta sumatoria da cero *probado en la clase anterior.*
+Con la nueva expresión la fórmula quedaría $N(r)=\sum^{t-r}_{k=0}(-1)^k(^t_r)(^{t-r}_{k})$, y como la sumatoria no depende de $r \implies N(r)=(^t_r)\sum^{t-r}_{k=0}(-1)^k(^{t-r}_{k})$ y esta sumatoria da cero *(probado en la clase anterior).*
 
 ### `Un elemento en al menos k conjuntos`
 En este caso como no lo veremos mucho en el curso solo pondremos la fórmula, queda por parte del estudiante ampliar sus conocimientos al respecto.
@@ -86,3 +86,49 @@ Sean $a_1,a_2,\ldots,a_n$, analicemos las siguientes sumas:
 Tenemos a repartir en las sumas $n$ posibles restos pero si alguna suma deja resto cero entonces es la suma buscada, de lo contrario tienes $n$ sumas para asignarles $n-1$ restos $\implies$ al menos dos sumas tendrán el mismo resto
 
 ## Ejercicios
+
+### `Problema 1`
+> Sean $A,B$ conjuntos finitos tal que $|A|=n$ y $|B|=m$. Calcule el número de funciones totales sobreyectivas de $A$ en $B$.
+
+### `Solución (Somoza)`
+El problema podemos reducirlo a distribuir $n$ objetos distintos en $m$ categorías distintas pero que en cada categoría haya al menos un objeto, porque la función es sobreyectiva, y tienen que estar todos los objetos repartidos porque la función es total.
+
+Vamos a proceder por el *Principio de Inclusión-Exclusión*, tomemos como universo $S_0$ la cantidad total de funciones que van de $A=\{a_1,a_2,\ldots,a_n\}$ a $B=\{b_1,b_2,\ldots,b_m\}$, lo cual es fácil computar la cantidad porque sería repartir $n$ elementos diferentes del dominio en $m$ categorías diferentes en la imagen de cualquier forma, lo cual sería $S_0=m^n$. Sea $N_{c_1,\ldots,c_r}$ como la cantidad de funciones que no tiene como elemento en su imagen a los valores  $c_1,\ldots,c_r$, lo cual tiene $(m-r)^n$, y $S_r$ es todas las formas de hacer lo anterior con todos los grupos de $r$ elementos del dominio y por cada una la cantidad de funciones que hay $\implies (^m_r)(m-r)^n$. Entonces la fórmula quedaría: $N(r)=\sum^m_{k=0}S_{k+r}$ y como queremos saber cuántas no incumplen ninguna, o sea que sean sobreyectivas $\implies r=0$ $\therefore$
+
+$$N(0)=\sum^m_{k=0}(-1)^kS_k=\sum^m_{k=0}(-1)^k(^n_k)(m-k)^n$$
+
+### `Problema 2`
+> Sea $n$ un entero positivo y $(n,10)=1$. Prueba que $\forall d \in \{1,2,3,4,5,6,7,8,9\}$ existen infinitos múltiplos de $n$ que están compuestos únicamente por el dígito $d$.
+
+### `Solución (Somoza)`
+Analicemos $n+1$ números formados solo con el dígito $d$ con distinta cantidad de este:
+- $\overline{d}$
+- $\overline{dd}$
+- $\overline{ddd}$
+- ...
+- $\overline{ddd...dd}$
+
+Si alguno deja resto cero ya lo tenemos, de lo contrario en $n+1$ números al menos 2 tendrán el mismo resto, y al restarlos, el resultado será un número de la forma $\overline{dd...d*10^k}$ y será divisible por $n$, pero como $(n,10)=1 \implies n\div \overline{dd...d}$ podemos generar infinitos números que tengan solo $d$ simplemente comncatenando el resultado anterior, lo cual sería también divisible por $n$.
+
+### Demostración
+Tenemos $a = \overline{a_1a_2...a_k}$ un número divisible entre $n$, como $n\div a \implies n\div (a*10^k+a)$ y $(a*10^k+a)=\overline{aa}$. Entonces si $n\div a \implies$ $n$ divide a cualquier concatenación de $a$ 
+
+
+### `Problema 3`
+> Sea $A=\{1,2,\ldots,2n\}$ y $S$ un subconjunto de $A$ de tamaño $n+1$. Prueba que existen dos elementos $a,b\in S$ tal que $a$ divide a $b$.
+
+### `Solución`
+Notemos que todo número puede ser expresado como $2^k*q$ y si queremos expresar cada elemento en el conjunto de esta forma $\implies 1 \le q \le n$ entonces $q$ tendría $n$ posibilidades pero hay más de $n$ números $\implies$ alguna pareja de números tendrán el mismo $q$ y distinto $k \implies$ uno es divisor del otro. 
+
+### `Problema 4`
+> Calcule el número de permutaciones del conjunto $\{1,2,\ldots,n\}$ donde ningún elemento está en su posición inicial.
+
+### `Problema 5`
+> Determine el número de soluciones enteras de $x_1+x_2+x_3+x_4=21$ con:
+> - $2 \le x_1 \le 5$
+> - $3 \le x_2 \le 7$
+> - $0 \le x_3 \le 6$
+> - $2 \le x_4 \le 10$
+
+### `Problema 6`
+> Una compañía de baile tiene 11 semanas para prepararse para una competencia y decide practicar una vez al día pero no más de 12 veces por semana. Prueba que existe un intervalo de días en que la compañia practica exactamente 21 veces.

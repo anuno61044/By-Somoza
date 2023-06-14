@@ -105,12 +105,17 @@ Recordemos que $(^n_k)$ es la cantidad de formas de hacer subconjuntos de tamañ
 
 ## `Ejemplo 4`
 A una fiesta a la que asisten $n$ personas hay 3 tipos de tragos y uno de ellos tiene alcohol, para que todas las personas selecciones uno de ellos. Teniendo en cuenta que de las $n$ personas hay exactamente una que debe conducir de regreso a su casa (o sea que no puede escoger el trago con alcohol) prueba que las posibilidades de que ocurran las situaciones anteriores son:
+
 $$2*n*3^{n-1} = \sum^n_{k=1}2^k*(^n_k)*k$$
+
+El miembro izquiero nos dice la cantidad de posibilidades pero enfocadas al chofer, o sea, tengo $n$ formas de seleccionar el chofer, por cada una de ellas puede seleccionar 2 tragos (sin alcohol) y el resto de las $n-1$ personas pueden seleccionar cualquiera de los 3 tragos $\implies 2*n*3^{n-1}$.
+
+En el caso del miembro derecho nos enfocamos en las personas que van a seleccionar cualquiera de los 2 tragos sin alcohol. Hay $(^n_k)$ formas para esas $k$ personas (con $k$ desde 1 hasta $n$), por cada una podemos seleccionar los tragos sin alcohol de $2^k$ formas y seleccionar a la vez $k$ posibles choferes, el resto de las $n$ personas toman alcohol, ya que analizamos cada posibilidad de extraer las $k$ que no toman alcohol $\implies$ la fórmula quedaría $\sum^n_{k=1}2^k*(^n_k)*k$
 
 ## Problemas y Soluciones
 
 ### `Problema 1`
-Calcule el número de soluciones $x_1 + x_2 + x_3 + x_4 = 50$ donde los $x_i$ son impares.
+> Calcule el número de soluciones $x_1 + x_2 + x_3 + x_4 = 50$ donde los $x_i$ son impares.
 
 ### `Solución 1 (Somoza)`
 Si analizamos llegamos a la concluisón que el problema se reduce a que: a partir de un conjunto de $50$ elementos seleccionar 4 subconjuntos con cantidad impar, lo cual podemos resolver agregando 3 separadores y la cantidad de formas de colocarlos en posiciones pares $(\lfloor \frac{50}{2} \rfloor)$ nos dará la solución que buscamos, lo cual sería $(^{26}_3)$.
@@ -119,16 +124,42 @@ Si analizamos llegamos a la concluisón que el problema se reduce a que: a parti
 Notemos que si los $x_i$ son impares podemos representarlos cada uno como $2y_i - 1$ donde $y_i \ge 0$, por tanto $x_1 + x_2 + x_3 + x_4 = 2y_1 - 1 + 2y_2 - 1 + 2y_3 - 1 + 2y_4 - 1 = 50 \implies 2y_1 + 2y_2 + 2y_3 + 2y_4 = 54 \implies y_1 + y_2 + y_3 + y_4 = 27$, pero como los $y_i$ no pueden estar vacíos debemos repartir 4 elementos, uno en cada conjunto, y nos quedaría 23 elementos iguales a repartir en 4 categorías distintas $\implies (^{23+4-1}_{4-1}) \implies (^{26}_{3})$.
 
 ### `Problema 2`
-Encuentre una expresión para computar $(x_1 + x_2 + \cdots + x_k)^n$
+> Encuentre una expresión para computar $(x_1 + x_2 + \cdots + x_k)^n$
 
 ### `Problema 3`
-Demuestre:
-1. $\sum^{n}_{k=0}(-1)^k(^n_k) = 0$
-2. $\sum^{n}_{k=0}(^n_k)^2 = (^{2n}_n)$
-3. $\sum^{n}_{k=0}k(^n_k) = n2^{n-1}$
+> Demuestre:
+> 1. $\sum^{n}_{k=0}(-1)^k(^n_k) = 0$
+> 2. $\sum^{n}_{k=0}(^n_k)^2 = (^{2n}_n)$
+> 3. $\sum^{n}_{k=0}k(^n_k) = n2^{n-1}$
+
+### `1.Solución`
+Primero vamos a contar de cuántas formas podemos contar todos los posibles subconjuntos de cualquier cardinalidad de un conjunto con $n$ elementos $A$ en los que no aparezca el elemento $a_0$, y sean estos subconjuntos $A_1,A_2,\ldots,A_k$. Observemos que, si los contamos a ellos y los volvemos a contar pero esta vez añadiéndole a cada uno el elemento $a_0$ obtendríamos todos los posibles subconjuntos de $A$, y veámoslos de esta forma:
+
+Subconjuntos|Subconjuntos con $a_0$
+:-----------|:---------------------
+$A_1$       |$A_1 \cup \{a_0\}$    
+$A_2$       |$A_2 \cup \{a_0\}$    
+$\cdots$    |$\cdots$              
+$A_k$       |$A_k \cup \{a_0\}$    
+
+En esta distribución todos los subconjuntos son distintos y hay por cada fila un subconjunto par y otro impar (porque solos se diferencian en el elemento $a_0$), por tanto, hay la misma cantidad de subconjuntos pares que de impares dado un conjunto $A$, por lo que $\sum{_{1 \le p \le n : p-par}}(^n_p)=\sum{_{1 \le i \le n : i-impar}}(^n_i)$ por lo que al restar los pares menos los impares que es la fórmula que queremos probar resulta cero.
+
+### `2.Solución (Marlon)`
+El miembro derecho lo podemos ver como la cantidad de formas de seleccionar $n$ elementos de un conjunto con $2n \implies (^{2n}_n)$. Esto es equivalente a particionar el conjunto en 2 subconjuntos de $n$ elementos cada uno y por cada forma $(^n_k)$ de seleccionar $k$ elementos en el primero tomar $n-k$ del segundo (^n_{n-k}) y esto último es equivalente a $(^n_k) \implies (^n_k)^2$, lo cual nos daría todas las formas de seleccionar subconjuntos de $n$ elementos $\implies \sum^{n}_{k=0}(^n_k)^2$
+
+### `3.Solución`
+Notemos que el miembro izquierdo podemos verlo como de cuántas formas podemos seleccionar por cada posible subconjunto de un conjunto de $n$ personas un líder para cada uno, cumpliéndo que este se encuentre dentro del conjunto, entonces para cada subconjunto de tamaño $k$ tendremos $k$ posibles líderes de sus miembros, y esto es $\sum^{n}_{k=0}k(^n_k)$. El miembro derecho es eso mismo pero enfocado de esta forma: para cada miembro del conjunto hay $n$ personas que pueden ser líder, y a cada una de ellas le podemos asignar un grupo a liderar con las restantes $n-1$ personas de $2^{n-1}$ posibilidades.
 
 ### `Problema 4`
-Calcule el número de subconjuntos $X$ de tamaño $k$ del conjunto $\{1,2,\ldots,n\}$ tal que $\forall a,b \isin X$ se cumple que $|a-b| \ge 3$.
+> Calcule el número de subconjuntos $X$ de tamaño $k$ del conjunto $\{1,2,\ldots,n\}$ tal que $\forall a,b \isin X$ se cumple que $|a-b| \ge 3$.
+
+### `Solución (David)`
+Si analizamos el problema de hacer subconjuntos de tamaño $k$ a partir de un conjunto de $n$ donde no haya elementos consecutivos resulta que: si lo vemos como cadenas binarias donde 1 en la posición $i$ es que seleccionamos el elemento $i$-ésimo y 0 si no lo hacemos, como seleccionamos $k$ elementos debemos agregar siempre entre ellos $k-1$ ceros, por lo que, la cantidad de posibilidades para colocar los unos se $(^{n-(k-1)})$.
+
+En el problema en cuestión la diferencia es que  entre cada uno no colocamos un cero, sino 2, por lo que basta restar $n-2(k-1)$ y el resultado hacer combinaciones en $k \implies (^{n-2(k-1)}_k)$
+
+### `Solución`
+Tenemos una cadena binaria de $n$ bits donde seleccionaremos $k$ unos que serán las posiciones de los elementos que escogeremos, luego, de los restantes $n-k$ elementos que serán todos ceros restamos $2(k-1)$ ceros que colocaremos después de cada uno añadido garantizando que la diferencia modular entre cada elemento sea al menos 3, lo que nos queda es repartir el resto de ceros entre las $k+1$ posiciones disponibles (entre los unos, antes de ellos y después de ellos), lo cual hacemos con el uso de $k$ separadores que tendríamos que adicionarle a $n-k-2(k-1)$, por lo que la fórmula final quedaría $(^{n-2k+2}_k)$
 
 ### `Problema 5`
 Calcule el número de arreglos de tamaño $n$ ordenados de menor a mayor donde cada elemento es un número de 1 a n.
@@ -136,5 +167,14 @@ Calcule el número de arreglos de tamaño $n$ ordenados de menor a mayor donde c
 ### `Problema 6`
 Hay 12 bombillos alineados en una fila, y empezando a enumerar los bombillos desde uno, los bombillos 3,7 y 11 están encendidos. En cada paso se enciende un bombillo pero solo si está junto a uno ya encendido. Calcule de cuántas formas distintas se logran encender todos.
 
+### `Solución 6`
+Tengamos esta distribución inicial de bombillos donde 0 es que el bombillo en esa posición está apagado y 1 que está encendido 0 0 1 0 0 0 1 0 0 0 1 0.
+
+Para cada grupo de $k$ ceros consecutivos hay una forma valida de encenderlo si el grupo tiene un solo bombillo encendido a algún lado, de lo contrario hay $2^{k-1}$ formas válidas porque en cada momento podemos encender apoyándonos en el bombillo a la izquierda o en el bombillo a la derecha, hasta que nos quede un solo bombillo el cual solo tiene una posibilidad $\implies 2^{k-1}$, como tengo grupos de 2,3,3,1 bombillos apagados, por cada uno tengo respectivamente $1, 2^3,2^3,1$ formas de encenderlos, pero el orden en que puedo encender cualquier bombillo válido en un grupo viene dado por las permutaciones con repetición de 12-3=9 en 2,3,3,1
+$\implies \frac{9!}{2!*3!*3!*1!}$ y como para cada posible orden en los grupos que enciendo tengo una forma particular de encender cada uno $\implies 1*2^3*2^3*1*\frac{9!}{2!*3!*3!*1!}$ 
+
 ### `Problema 7`
 De cuántas formas se particiona un conjunto de $n$ elementos en $j_1$ subconjuntos de tamaño 1, $j_2$ de tamaño 2 hasta $j_k$ subconjuntos de tamaño $k$.
+
+### `Solución`
+Recordemos que las permutaciones con repetición nos dan la cantidad de formas en las que podemos permutar los elementos de un conjunto con elementos repetidos, lo cual nos garantiza no contar de más, pero en lugar de permutaciones queremos las combinaciones de los subconjuntos en las particiones que formamos, o sea, no contar más de una vez una partición con los mismos subconjuntos de igual tamaño sin importar su orden, por lo que, para cada cantidad $j_i$ de subconjuntos del mismo tamaño debemos dividir las permutaciones con repetición entre $j_i!$ y nos quedaría la fórmula $\frac{n!}{1!*2!*\cdots*k!*j_1!*j_2!*\cdots*j_k!}$

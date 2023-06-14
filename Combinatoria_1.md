@@ -41,7 +41,7 @@ Resolvamos el problema construyendo la solucion, analicemos estos casos:
 
 1. No aparecen ni $a$ ni $d$ en la cadena:
 
-Entonces basta permutar las restantes 24 letras en los 7 espacios disponibles. Por tanto $P(24,7) = \frac{24!}{7!*17!}$
+Entonces basta permutar las restantes 24 letras en los 7 espacios disponibles. Por tanto $P(24,7) = \frac{24!}{17!}$
 
 2. Aparece una de las letras pero no la otra:
 
@@ -127,7 +127,12 @@ $\therefore$ el número total de formas, usando el principio de la multiplicaci�
 Nótese que la cantidad de formas totales de repartir n elementos en los 2 subconjuntos pudiendo cada elemento no estar en ninguno y garantizando que un elemento pertenezca solo a un subconjunto es $3^n$. Luego, la cantidad de formas de colocar los elementos en $A$ y no en $B$ es $2^n$ y análogamente colocar en $B$ y no en $A \implies$ la cantidad de formas de dejar al menos un subconjunto vacío es $2*2^n$ por el *Principio de la Suma* $\therefore$ la cantidad de pares de subconjuntos no ordenadosni nulos $A,B$ tales que tengan intersección nula es $3^n - 2^{n+1}$.
 
 ### `Problema 6`
-> Una permutación de $n$ números es casi cresciente si solo existe un único par de elementos $a_i, a_j$ de la permutación tal que $i<j$ y $a_i > a_j$. Cuántas permutaciones casi crescientes hay en el conjunto 
+> Una permutación de $n$ números es más o menos cresciente si solo existe un único par de elementos $a_i, a_j$ de la permutación tal que $i<j$ y $a_i > a_j$. Cuántas permutaciones casi crescientes hay en el conjunto 
 
 ### `Solución`
-La cantidad de permutaciones no crescientes es equivalente a la cantidad de inversiones de 2 elementos que puedo hacer en el conjunto de $n$ elementos ordenados, la cual es $(^n_2)$. 
+La cantidad de permutaciones no crescientes es equivalente a la cantidad de inversiones de 2 elementos que puedo hacer en el conjunto de $n$ elementos ordenados, la cual es $(^n_2)$.
+
+### `Problema 7`
+> Una permutación de $n$ números es casi cresciente si solo existe un único $k$ con $k \lt n-1$ tal que $a_k > a_{k+1}$. Cuántas permutaciones casi crescientes hay en el conjunto?
+
+### `Solución`
