@@ -123,6 +123,13 @@ Notemos que todo número puede ser expresado como $2^k*q$ y si queremos expresar
 ### `Problema 4`
 > Calcule el número de permutaciones del conjunto $\{1,2,\ldots,n\}$ donde ningún elemento está en su posición inicial.
 
+### `Solución`
+Procedamos por *Principio de Inclusión-Exclusión*, definimos nuestro universo $N$ como todas las posibles ordenaciónes que podemos hacer en el array $\implies n!$ luego analicemos los siguientes casos:
+1. Cuando un número está en su posición hay $(n-1)!$ formas porque el resto de los números permutan, y haciendo este análisis con los $n$ elemento tenemos $S_1 = n(n-1)! = (^n_1)(n-1)!$
+2. Cuando $r$ números están en su posición correcta tenemos $(n-r)!$ formas permutando el resto de los elemento, y como son $(^n_r)$ $r-$uplas resulta $S_r = (^n_r)(n-r)!$
+
+Luego, teniendo en cuenta que $n! = (^n_0)(n-0)!$, por el Principio de I-E resulta que la cantidad de formas en que ningún número seencuentre en su posición es $N(0) = \sum^n_{k=0}(-1)^k(^n_k)(n-k)!$ 
+
 ### `Problema 5`
 > Determine el número de soluciones enteras de $x_1+x_2+x_3+x_4=21$ con:
 > - $2 \le x_1 \le 5$
@@ -130,5 +137,8 @@ Notemos que todo número puede ser expresado como $2^k*q$ y si queremos expresar
 > - $0 \le x_3 \le 6$
 > - $2 \le x_4 \le 10$
 
+### `Solución`
+
 ### `Problema 6`
 > Una compañía de baile tiene 11 semanas para prepararse para una competencia y decide practicar una vez al día pero no más de 12 veces por semana. Prueba que existe un intervalo de días en que la compañia practica exactamente 21 veces.
+
