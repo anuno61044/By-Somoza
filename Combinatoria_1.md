@@ -24,7 +24,7 @@ Sean A y B conjuntos finitos, si A ∩ B = ∅ entonces |A ∪ B| = |A| + |B|.
 ## k-Permutaciones
 Una permutación de n objetos es una ordenación de estos en fila. Se denota por $P(n)$ o por $P_n$. Además $P_n$ = n!.
 
-Una k−permutación (conocido también como variaciones) de un conjunto S, es una secuencia de k elementos distintos de S. Se denota por $P(n, k)$ o por $V^n_k$. Además $V^n_k = n!*(n−k)!$.
+Una k−permutación (conocido también como variaciones) de un conjunto S, es una secuencia de k elementos distintos de S. Se denota por $P(n, k)$ o por $V^n_k$. Además $V^n_k = \frac{n!}{(n−k)!}$.
 
 ## k-Combinaciones
 Si se tienen n objetos, una combinación de k en n, es una combinación de k objetos tomados de los n. Se denota por $C(n, k)$, por $C^n_k$ o por $(^n_k)$.  Además $(^n_k)$ = $\frac{n!}{k!*(n-k)!}$  

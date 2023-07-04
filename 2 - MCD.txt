@@ -1,9 +1,9 @@
-1 - Sean a, b1, b2, ..., bn enteros con a != 0. Prueba que si a\b1*b2*...*bn y a es primo relativo con todos los bi excepto bn, entonces a\bn.
+ 1 - Sean a, b1, b2, ..., bn enteros con a != 0. Prueba que si a\b1*b2*...*bn y a es primo relativo con todos los bi excepto bn, entonces a\bn.
 
 Procedamos por induccion:
 i) para n = 2: Si a \ b1*b2 y mcd(a,b1) = 1 => a\b2
 Notese que existen x,y tales que mcd(x,y) = 1 y a*x + b1*y = 1 porque mcd(a,b1) = 1, al multiplicar por b2 queda que a*b2*x + b1*b2*y = b2, pero como a\a*b2 y a\b1*b2 por datos => a\b2
-ii) Supongamos que para n = k se cumple que a\b1*b2*...*bk y a es primo relativo con todos los bi excepto bk, entonces a\bk
+ii) Supongamos que para n = k se cumple que a\b1*b2*...*bk y a es primo relativo con todos los bi excepto bk, en tonces a\bk
 iii) Para n = k+1 se cumple que: como a es coprimo con b1,b2 => a es coprimo con b1*b2. Demostremoslo.
 si mcd(a,b1) = 1 => existen x,y tal que a*x + b1*y = 1 => a*b2*x + b1*b2*y = b2, como mcd(b2,a) = 1 y a\a*b2 => a no divide a b1*b2.
 Entonces sea b1*b2 = t1, luego b1*b2*...*bk*
