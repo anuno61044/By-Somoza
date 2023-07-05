@@ -93,9 +93,9 @@ $(a,b) = (b,R)$
 ### `Solución`
 Para demostrar este problema demostremos el siguiente lema:
 
-- Si $mcd(a,b) = d$, con $d = d_1d_2$ y sean $x,y$ números que cumplen que $ax + by = d$, entonces, al dividir entre $d_1$ tenemos que esos mismos $x,y$ generan la mínima combinación lineal de $\frac{a}{d}=a_1$ y $\frac{b}{d}=b_1$
+- Si $mcd(a,b) = d$, $t \in \Z_+$ un número que divide a $a,b,d$ y $x,y$ números que cumplen que $ax + by = d$, entonces, al dividir entre $t$ tenemos que esos mismos $x,y$ generan la mínima combinación lineal de $\frac{a}{t}=a_1$ y $\frac{b}{t}=b_1$
   
-  Supongamos que es falso, o sea, que $d_2$ no es la mínima combinación lineal de $a_1,b_1$, entonces sean $x_1,y_1$ números tal que $mcd(a_1,b_1) = d_3 \lt d_2$ y $a_1x_1 + b_1y_1 = d_3$, pero al multiplicar la ecuación por $d_1$ se cumple que $ax_1 + by_1 = d_3d_1 < d$, lo cual es falso porque $mcd(a,b) = d$
+  Supongamos que es falso, o sea, que $\frac{d}{t}$ no es la mínima combinación lineal de $a_1,b_1$, entonces sean $x_1,y_1$ números tal que $mcd(a_1,b_1) = d_1 \lt \frac{d}{t}$ y $a_1x_1 + b_1y_1 = d_1$, pero al multiplicar la ecuación por $t$ se cumple que $ax_1 + by_1 = d_1t < d$, lo cual es falso porque $mcd(a,b) = d$
 
 Sea $mcd(ka,kb) = d \implies$ existen $x,y$ tal que $kax + kby = d \implies k(ax + by) = d$ y como $x,y$ generan la menor combinación lineal de $ka,kb$ entonces por el lema anteriormente demostrado $ax + by = mcd(a,b)$ y por tanto $k*mcd(a,b) = mcd(ka,kb)$
 
