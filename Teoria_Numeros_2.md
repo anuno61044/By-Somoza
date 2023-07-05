@@ -1,5 +1,7 @@
 # Teoría de Números 2
 
+## Temas
+
 ## Ejercicios
 
 ### `Problema 1`
@@ -108,17 +110,65 @@ Sea $mcd(ka,kb) = d \implies$ existen $x,y$ tal que $kax + kby = d \implies k(ax
 > Prueba que para todo $n$ mayor que 2 se cumple que existe $p$ primo tal que $n < p < n!$
 
 ### `Solución`
+Nótese que para $n \gt 2$ entre $n y n!$ existen números, luego como $n! = 1*2*3*...*n \implies n! - 1$ es coprimo con cada número menor igual que $n$, por tanto, $n! - 1$ es primo o es divisible entre un primo mayor que $n$ pero menor que $n!$
 
 ### `Problema 8`
 
 > Sea $p_n$ el $n-esimo$ primo. Prueba que $p_n \le 2^{2^{n-1}}$
 
 ### `Solución`
+Demostrémoslo por inducción fuerte:
+- Caso base: para n = 1 tomemos 2 como el primer primo, entonces se cumple que $2 = 2 \implies p_1 \le 2^{2^{1-1}}$ 
+- Hipótesis de inducción: para todo $i$ desde 1 hasta $k$ se cumple que $p_i \le 2^{2^{i-1}}$
+- Demostremos que si multiplicamos todos los primos hasta el $k-$esimo el resultado será un número mayor que el próximo primo, o sea, $p_1p_2\cdots p_k \gt p_{k+1}$
+- - Nótese que si el número $p_1p_2\cdots p_k- 1$ es primo ya existe un primo mayor que $p_k$ y menor que $p_1p_2\cdots p_k$, de lo contrario ese número se puede expresar como $a*b$ donde tanto $a$ como $b$ son coprimos con los primeros $k$ primos, sin pérdida de generalidad sea $a \gt 1$, entonces si $a$ cumple con el primo que estamos buscando, de lo contrario $a = a_1*b_1$ y así se repite el proceso hasta que por el principio del buen orden, como estamos teniendo en cuenta solo los divisores positivos, llegaremos a algún $a_m$ tal que sea primo y este cumplirá con la condición de ser mayor que $p_k$ y menor que $p_1p_2\cdots p_k$
+- Luego, utilizando que para todo $i \le k$ se cumple que $p_i \le 2^{2^{i-1}}$ y por tanto, teniendo en cuenta lo anteriormente demostrado  $p_{k+1} \lt p_1p_2\cdots p_k \le 2^{2^{n-1} + 2^{n-2} + \cdots + 2 + 1} = 2^{2^n-1} \lt 2^{2^n} \implies p_{k+1} \lt 2^{2^n}$
 
 ### `Problema 9`
-> Sean a,b enteros, mcd(a,b) = 1 y n entero positivo. Calcule:
+> Sean $a,b$ enteros, $mcd(a,b) = 1$ y $n$ entero positivo. Calcule:
 >
 > 1. $mcd(a + b, ab)$
 > 2. $mcd(a + b, a - b)$
 > 3. $mcd(a + b, a^2 + b^2)$
 > 4. $mcd(n^2 + 1, (n+1)^2 + 1)$
+
+### `1. Solución`
+Lema: sean $d,a,b$ enteros con $d \gt 1$ tal que $d \div ab$ entonces siempre existen $d_1,d_2$ tales que $d = d_1d_2$ y $d_1 \div a, d_2 \div b$
+- Demostración: sea $d_1 = mcd(a,d)$, como $d \div ab \implies \exist r \in \Z$ tal que:
+  $$dr = ab$$
+
+  Dividiento entre $d_1$ tenemos que:
+  $$d_2r = a_1b$$
+
+  Pero como $d_1 = mcd(a,d) \implies mcd(d_2,a_1) = 1 \implies d_2 \div b$ que es lo que queríamos probar: $d = d_1d_2$ con $d_1 \div a, d_2 \div b$ 
+
+Supongamos que $mcd(a + b, ab) = d \gt 1$, entonces si $d = d_1*d_2$ y utilizando el lema anteriormente demostrado, asumamos sin pérdida de generalidad que $d_1 > 1$ y $d_1 \div a$, y como $d_1 \div d \implies d_1 \div (a+b) \implies d_1 \div b$ contradicción porque $mcd(a,b) = 1$
+
+### `2. Solución`
+Supongamos que $mcd(a+b,a-b) = d$ entonces $d \div (a+b)$ y $d \div (a-b)$ de donde, al rumar y restar ambas expresiones obtenemos que $d \div 2a$ y $d \div 2b$.
+
+Por el lema demostrado en el ejercicio anterior $d = d_1d_2$ tal que $d_1 \div 2$ y $d_2 \div a$ en la primera expresión, luego si $d_2 \div a$, como $d \div (a+b) \implies d_2 \div (a+b) \implies d_2 \div b \implies d_2 = 1$. Como $d_1 \div 2 \implies d_1 = 1$ o $d_1 =2$ y por tanto, $d=2$ cuando $a,b$ son impares y $d=1$ cuando uno es par y otro impar.
+
+### `3. Solución`
+Supongamos que $mcd(a + b, a^2 + b^2) = d$ entonces $d \div (a+b)$ y $d \div (a^2 + b^2)$ de donde, en la primera expresión se cumple que $d \div (a+b)^2 \implies d \div (a^2+b^2+2ab)$ y como $d \div (a^2 + b^2) \implies d \div 2ab$.
+
+Análogamente a la demostración del último lema usado se puede demostrar que dado $d \div abc$ se cumple que existen $d_1,d_2,d_3$ tales que $d = d_1d_2d_3$ y $d_1 \div a, d_2 \div b, d_3 \div c$, por lo que, de vuelta al problema en el que estabamos, existen $d_1,d_2,d_3$ tales que $d = d_1d_2d_3$ y $d_1 \div 2, d_2 \div a, d_3 \div b$. De manera similar al inciso anterior se demuestra que $d_2,d_3 = 1$, por lo que $d=1$ o $d = 2$
+
+### `4. Solución`
+Supongamos que $mcd(n^2 + 1, (n+1)^2 + 1) = d$ entonces:
+1. $$d \div (n^2 + 1)$$ 
+2. $$d \div ((n+1)^2 + 1)$$
+
+Restando ambas expresiones tenemos:
+
+3. $$d \div (2n+1)$$
+
+Luego, restando (1) con (3) resulta en:
+
+4. $$d \div n(n-2)$$
+
+Del lema utilizado en los incisos anteriores $d = d_1d_2$ tal que $d_1 \div n$ y $d_2 \div (n-2)$. Si $d_1 \div n$, teniendo en cuenta (1) llegamos a que $d_1 \div 1 \implies d_1 = 1 \implies$ 
+
+5. $$d \div (n-2)$$
+
+Restando (3) con (5) obtenemos que $d \div (n-3)$ y restándole a este ultimo resultado la expresión (5) llegamos a la conclusión que $d \div 5$, de donde $d = 1$ o $d = 5$, caso que es posible cuando por ejemplo $n=2$.
