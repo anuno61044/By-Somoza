@@ -87,3 +87,14 @@ Notemos que el problema se puede dividir en dos momentos disjuntos que su unión
 
 ### `Problema 6`
 > Encuentre la relación de recurrencia que permite calcular el número de permutaciones de $\{1,2,\dots n\}$ donde ningún elemento está en su posición original
+
+### `Solución`
+Si analizamos, podemos hacer una biyección entre calcular el número de permutaciones de $n$ elementos donde ninguno esté en su posición y la cantidad de formas de hacer un intercambio de regalos con $n$ personas de forma tal que ninguna se regale a si misma. Vemos las personas como las posiciones de nuestro array y los elementos que ponemos en las posiciones como las personas a las que dicha persona le regala, garantizando que ninguna persona se regale a sí misma estaremos asegurando que en la posición $i$ no esté el elemento $i$ en el array.
+
+Sea $a_{n-1}$ la cantidad de formas de realizar el intercambio de regalos con $n-1$ personas, luego, al añadir una persona esta puede regalarle a cada una de las $n-1$ restantes, y por cada una tenemos dos casos disjuntos, que esta le regale a otra persona o que le regale a la nueva:
+1. En caso que la persona regalada le regale a alguna de las $n-2$ restantes podemos ver estas dos personas como una sola, que debe regalar a alguna de las otras $n-2$ (en caso de la persona que está siendo regalada por la nueva) y debe ser regalada (en caso de la persona nueva que solo está regalando), con lo cual tendríamos un intercambio de regalos con nuevamente $n-1$ personas.
+2. En caso que la persona regalada le regale a la nueva en ellas se formó un intercambio disjunto del resto, por lo cual, basta en este caso contar la cantidad de formas de hacer un intercambio con las demás $n-2$ personas.
+
+En conclusión, la cantidad de formas de hacer un intercambio de regalos con $n$ personas es:
+
+$$a_n = (n-1)(a_{n-1} + a_{n-2})$$
