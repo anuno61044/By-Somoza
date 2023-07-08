@@ -243,3 +243,19 @@ Nótese que $\frac{n(n-1)}{2} = 1+2+\cdots +n$ y esto podemos verlo como la cant
 Por cada denominador $q$ desde 1 hasta $n$ contamos la cantidad de fracciones propias irreducibles la cual es una cantidad $\varphi(q)$, y luego debemos generar todas las fracciones propias tal que $q \le n$ con cada fracción irreducible, las cuales, por cada $q$ hay $\lfloor \frac{n}{q} \rfloor$.
 
 Por tanto $\frac{n(n-1)}{2} = \sum_{q=1}^n\varphi(q)* \lfloor \frac{n}{q} \rfloor$
+
+### `Problema 4`
+> Calcule el $mcd(n!+1,(n+1)!)$
+
+### `Solución`
+Sea $mcd(n!+1,(n+1)!) = d \gt 1 \implies \exist \ p$ primo tal que $p \div n!+1 \implies p$ es corpimo con cada $k \le n$ y como $p \div (n+1)! \implies p \div (n+1)$. Luego pueden darse dos casos:
+- $(n+1)$ es compuesto $\implies$ $p \lt (n+1) \implies p \div n!$ contradicción porque $p \div (n!+1)$
+- $(n+1)$ es primo $\implies p \div (n+1)$ y por el *Teorema de Wilson* $p \div n!+1$
+
+Por tanto, si $(n+1)$ es compuesto $mcd(n!+1,(n+1)!) = 1$, de lo contrario $mcd(n!+1,(n+1)!) = n+1$
+
+### `Problema 5`
+> Demuestra que si $n$ es compuesto se cumple que $\varphi(n) \le n - \sqrt{n}$
+
+### `Problema 6`
+> Sea $p$ primo mayor que 2. Demuestra que todo divisor de $2^p-1$ es de la forma $2kp+1$ con $k \in \Z$
