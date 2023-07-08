@@ -9,6 +9,7 @@
 6. **Funciones multiplicativas**
 7. **Función $\varphi(n)$**
 8. **Orden $a$ módulo $n$**
+9. **Raiz primitiva**
 
 ## Teorema de Fermat (demostración)
 Recordemos el Teorema de Fermat:
@@ -177,3 +178,68 @@ Nótese que los números menores que $p^k$ coprimos con este son los que no cont
 ### `Propiedad`
 > Sea $a,n \in \Z_+$,$mcd(a,n)=1$ y $ord_na=e \implies a^t \equiv 1 \ mod(n) \iff e \div t$
 
+$(\impliedby)$ Supongamos que $e \div t$ entonces $t = eq \implies a^t=(a^e)^q$ por tanto:
+$$a^e \equiv 1 \ mod(n)\\
+(a^e)^q \equiv 1 \ mod(n)\\
+a^t \equiv 1 \ mod(n)$$
+
+#### `Vía Alvarito`
+$(\implies)$ Sea $t = eq + r$ entonces se cumple que como $a^t \equiv 1 \ mod(n)$:
+$$a^{eq+r} \equiv 1 \ mod(n)\\
+  (a^e)^q * a^r equiv 1 \ mod(n)$$
+
+Y como $a^e \equiv 1 \ mod(n)$ entonces:
+$$a^r \equiv 1 \ mod(n)$$
+
+Lo cuales falso porque $ord_na=e$ y $r \lt e$
+
+#### `Otra vía`
+Como se cumple que:
+$$a^t \equiv 1 \ mod(n)\\
+a^e \equiv 1 \ mod(n)$$
+
+Entonces siendo $t = eq + r$ ocurre que $n \div a^t-a^e \implies n \div a^e(a^{e(q-1)+r}-1)$ y como $a^e \equiv 1 \ mod(n)$ entonces $n \div a^{e(q-1)+r}-1$ de donde $a^{e(q-1)+r} \equiv 1 \ mod(n)$. Luego:
+$$a^{e(q-1)+r} \equiv 1 \ mod(n)\\
+a^e \equiv 1 \ mod(n)$$
+
+Por lo que $n \div a^{e(q-1)+r}-a^e \implies n \div a^e(a^{e(q-2)+r}-1)$ y por el razonamiento anterior $n \div a^{e(q-2)+r}-1$
+
+Repitiendo este algoritmo $q$ veces legamos a que $n \div a^{e(q-q)+r}-1$ cumpliéndose que:
+$$a^r \equiv 1 \ mod(n)$$
+
+Lo cuales falso porque $ord_na=e$ y $r \lt e$
+
+## Raiz primitiva
+> Sean $a,n \in \Z_+$ y $mcd(a,n)=1$ decimos que $a$ es raíz primitiva módulo $n$ si se cumple que $ord_na=\varphi(n)$
+
+## Ejercicios
+
+### `Problema 1`
+> Sean $a,n$ enteros positivos con $a \gt 1$. Prueba que $n \div \varphi(a^n-1)$
+
+### `Solución`
+Nótese que $a^n - 1 \equiv 0 \ mod(a^n - 1) \implies a^n \equiv 1 \ mod(a^n - 1)$
+
+Sea $k \in \Z_+^*$ con $k \lt n \implies a^k \in$ SRC módulo $a^n-1$, y como $k \ne 0$ entonces no existe valor de $k$ tal que $a^k \equiv 1 \ mod(a^n-1)$ (no puede ser cero porque $k$ es entero positivo y el poren se define siempre positivo)
+
+Luego $n$ es el menor entero positivo que cumple la condición, por tanto $ord_{a^n-1}a=n$. Pero como $mcd(a,a^n - 1) = 1$ se cumple que $a^{\varphi(a^n - 1)} \equiv 1 \ mod(a^n - 1) \implies n \div \varphi(a^n - 1)$
+
+### `Problema 2`
+> Sea $p$ primo mayor que 5. Prueba que $(p-1)! + 1$ tiene 2 divisores primos diferentes.
+
+### `Solución`
+Por el Teorema de Wilson se cumple que $p \div ((p-1)!+1)$, luego debemos demostrar que $(p-1)!+1$ no es una potencia de $p$, o sea, hay otro primo en su descomposición. 
+
+Supongamos que $(p-1)!+1 = p^t$ para algún $t \gt 1$, cumpliéndose que $t < p-1$ porque $(p-1)!+1 < p^{p-1}$. Luego $p^t - 1 = (p-1)!$, pero $p^t - 1 = (p - 1)(p^{t-1} + p^{t-2} + ... + p + 1)$, si dividimos entre $p-1$ resulta en $p^{t-1} + p^{t-2} + ... + p + 1 = (p-2)!$, nótese que como $p-1$ es par $\implies$ es compuesto, luego $p-1 \div (p-2)!$, entonces $p^{t-1} + p^{t-2} + ... + p + 1 \equiv 0 \ mod(p-1)$, pero como $p \equiv 1 \ mod(p-1) \implies p^{t-1} + p^{t-2} + ... + p + 1 \equiv t \ mod(p-1)$, entonces debe cumplirse que $t \equiv 0 \ mod(p-1)$, y esto no se cumple porque $t \lt p-1$. 
+
+Entonces $(p-1)! + 1$ no es una potencia de $p$, y como es mayor que $p$ entonces tiene como factor otro primo distinto de $p$.
+
+### `Problema 3`
+> Sea $n$ entero positivo. Prueba que $\sum_{k=1}^n\varphi(k)* \lfloor \frac{n}{k} \rfloor = \frac{n(n-1)}{2}$
+
+### `Solución`
+Nótese que $\frac{n(n-1)}{2} = 1+2+\cdots +n$ y esto podemos verlo como la cantidad de fracciones $\frac{p}{q}$ tal que $p \le q$ y $q \le n$
+
+Por cada denominador $q$ desde 1 hasta $n$ contamos la cantidad de fracciones propias irreducibles la cual es una cantidad $\varphi(q)$, y luego debemos generar todas las fracciones propias tal que $q \le n$ con cada fracción irreducible, las cuales, por cada $q$ hay $\lfloor \frac{n}{q} \rfloor$.
+
+Por tanto $\frac{n(n-1)}{2} = \sum_{q=1}^n\varphi(q)* \lfloor \frac{n}{q} \rfloor$
