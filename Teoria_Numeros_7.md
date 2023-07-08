@@ -248,7 +248,7 @@ Por tanto $\frac{n(n-1)}{2} = \sum_{q=1}^n\varphi(q)* \lfloor \frac{n}{q} \rfloo
 > Calcule el $mcd(n!+1,(n+1)!)$
 
 ### `Solución`
-Sea $mcd(n!+1,(n+1)!) = d \gt 1 \implies \exist \ p$ primo tal que $p \div n!+1 \implies p$ es corpimo con cada $k \le n$ y como $p \div (n+1)! \implies p \div (n+1)$. Luego pueden darse dos casos:
+Sea $mcd(n!+1,(n+1)!) = d \gt 1 \implies \exist \ p$ primo tal que $p \div n!+1 \implies p$ es coprimo con cada $k \le n$ y como $p \div (n+1)! \implies p \div (n+1)$. Luego pueden darse dos casos:
 - $(n+1)$ es compuesto $\implies$ $p \lt (n+1) \implies p \div n!$ contradicción porque $p \div (n!+1)$
 - $(n+1)$ es primo $\implies p \div (n+1)$ y por el *Teorema de Wilson* $p \div n!+1$
 
@@ -259,3 +259,20 @@ Por tanto, si $(n+1)$ es compuesto $mcd(n!+1,(n+1)!) = 1$, de lo contrario $mcd(
 
 ### `Problema 6`
 > Sea $p$ primo mayor que 2. Demuestra que todo divisor de $2^p-1$ es de la forma $2kp+1$ con $k \in \Z$
+
+### `Solución`
+Notemos que basta analizar los divisores primos de $2^p-1$ porque si dos divisores primos cumplen la condición, su producto también la cumplirá:
+$$(2k_1p+1)(2k_2p+1) = 2p(2k_1k_2p+k_1+k_2)+1$$
+
+Sea $q \in \Z_+^*$ primo tal que $q \div (2^p-1) \implies 2^p \equiv 1 \ mod(q)$. Analicemos los siguientes casos:
+- $p \div (q-1)$
+
+Se cumple entonces que existe un $k \in \Z$ tal que $q-1 = kp \implies q=kp+1$ y como $q$ es primo distinto de 2 entonces $k$ es par, por lo que $q$ cumple la condición del problema.
+
+- $p$ no divide a $q-1$
+
+Notemos que en este caso $mcd(p,q-1)=1$ por lo que existe $x$ tal que $(q-1)x \equiv 1 \ mod(p) \implies \exist t \in \Z: \ (q-1)x=tp+1$. Luego, utilizando el *Pequeño Teorema de Fermat* se cumple que $2^{q-1} \equiv 1 \ mod(q)$, por lo que $2^{(q-1)x} \equiv 1 \ mod(q)$, y también como $2^p \equiv 1 \ mod(q) \implies 2^{pt} \equiv 1 \ mod(q)$ por tanto, teniendo en cuenta que $(q-1)x=tp+1$:
+$$2^{pt+1} \equiv 1 \ mod(q)\\
+  2^{pt}*2 \equiv 1 \ mod(q)$$
+
+Pero como $2^{pt} \equiv 1 \ mod(q)$ contradicción, por tanto $p$ siempre divide a todo divisor primo $q \implies$ todo divisor de $2^p-1$ es de la forma $2kp+1$ con $k \in \Z$
