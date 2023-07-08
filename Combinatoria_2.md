@@ -97,6 +97,13 @@ Recordemos que el miembro izquierdo nos da la cantidad de formas de seleccionar 
 
 > ## $$(^k_k) + (^{k+1}_k) + \cdots + (^n_k) = (^{n+1}_{k+1})$$
 
+Vamos a demostrarlo por inducción:
+- Caso base $n=k$ se cumple que $(^k_k)=(^{k+1}_{k+1})$
+- Hipótesis de inducción$(^k_k) + (^{k+1}_k) + \cdots + (^n_k) = (^{n+1}_{k+1})$ se cumple hasta $n$
+- Demostremos que se cumple para $n+1$, notemos que la suma de los $n$ primeros términos de la sumatoria $(^k_k) + (^{k+1}_k) + \cdots + (^n_k) + (^{n+1}_k)$ por hipótesis de inducción es igual a $(^{n+1}_{k+1})$ por lo que bastaría probar que $(^{n+1}_{k+1}) + (^{n+1}_k) = (^{n+2}_{k+1})$ y esto podemos demostrarlo fácilmente con el siguiente problema: De cuántas formas puedo hacer grupos de $K+1$ teniendo $n+2$ elementos totales
+- - El miembro derecho de la igualdad es exactamente la solución al problema que tenemos planteado
+- - Otra forma de bver a solución es fijando un elemento, y haciendo grupos donde este esté y luego grupos donde no esté, la cantidad total de formas de hacer esto resulta el miembro izquierdo.
+
 > ## $$(^n_k) = (^n_{n-k})$$
 Nótese que si tenemos $n$ elementos y una cadena de tamaño $n$ en las primeras $k$ posiciones puedo colocar $n$ elementos de $(^n_k)$ y por cada una tengo una distribución única en las restantes $n-k$ posiciones. Si analizamos ahora en una cadena de $n$ posiciones la cantidad de formas de llenar $n-k$ posiciones resulta en $(^n_{n-k})$ y para cada una de estas hay una única forma de distribuir el resto en $k$ posiciones. Como se puede establecer una biyección en la cantidad de formas de repartir en $n-k$ y en $k$ entonces $(^n_k) = (^n_{n-k})$
 
