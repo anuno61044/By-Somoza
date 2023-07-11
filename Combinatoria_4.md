@@ -63,12 +63,32 @@ Notemos que el problema se puede dividir en dos momentos disjuntos que su unión
 > 1. El número de palabras de longitud $n$ con letras mayúsculas que no contengan dos $z$ juntas
 > 2. El número de cadenas de longitud $n$ sobre $\{a,b,c\}$ con una cantidad impar de $c$
 
-### `Solución`
+### `1. Solución`
+Sea $a_n$ la cantidad de palabras válidas que podemos formar con $n$ caracteres. Notemos que la cantidad de formas en que la palabra comienze con $a$ es $a_{n-1}$ porque los restantes $n-1$ caracteres serán una palabra válida, luego, este mismo análisis se puede hacer con las primeras 25 letras del alfabeto.
+
+Al analizar la $z$ vemos que, el siguiente caracter no puede ser $z$, luego, las dos primeras letras pueden ser $za,zb,\ldots,zy$. Por tanto, la recurrencia tiene la forma:
+$$a_n=25a_{n-1}+25a_{n-2}$$
+
+### `2. Solución (1)`
+Sea $p_n$ la cantidad de formas de formar cadenas con $n$ caracteres con una cantidad par de $c$ e $i_n$ con una cantidad impar de $c$, y $3^n$ la cantidad total de cadenas. Se cumple que:
+$$p_n=2p_{n-1}+i_{n-1}\\
+  i_n=2i_{n-1}+p_{n-1}$$
+
+La cantidad de candenas de tamaño $n$ con una cantidad par de $c$ podemos verla como, empezando con $a$ contar una cantidad par de $c$ en las restantes $n-1$ letras, al igual que empezando con $b$. Luego, si empezara con $c$ tendríamos que contar con $n-1$ la cantidad que formas en que tendríamos una cantidad impar de $c$.
+
+Despejando en el sistema llegamos a la fórmula:
+$$a_n=4a_{n-1}-3a_{n-2}$$
+
+### `2. Solución (2)`
+Notemos que la cantidad de cadenas tamaño $n$ que comienzan con $a$ en $a_{n-1}$, al igual que las que comienzan con $b$. Si comienzan con $c$ hay 3 posibilidades, $ca,cb,cc$, para cada una de las dos primeras es como si quitaramos la segunda letra y hallemos la cantidad de formas para $n-1$ de que comiencen con $c$, que es la cantidad total con $n-1$ menos las que comienzan con $a$ y $b \implies a_{n-1}-2a_{n-2}$, y si comenzara con $cc$ basta eliminarlas y sumar la cantidad de formas con $n-2$. Por tanto, la fórmula final resulta:
+$$a_n=4a_{n-1}-3a_{n-2}$$
 
 ### `Problema 2`
-> Sea $n \in \Z_+$ Calcule el el número de formas de descomponer a $n$ en sumandos positivos donde el orden es significativo.
+> Sea $n \in \Z_+$ Calcule el número de formas de descomponer a $n$ en sumandos positivos donde el orden es significativo.
 
 ### `Solución`
+Sea $a_n$ la cantidad de formas de descomponer a $n$ con las condiciones del problema, luego, si el primero de esos sumandos es 1, al eliminarlo tendríamos la cantidad de formas de descomponer a $n-1$ en sumandos con las condiciones propuestas, si empieza en $k \gt 1$ le restamos uno a $k$ y volveríamos a tener la cantidad de formas de descomponer a $n-1$ en dichos sumandos $\implies$
+$$a_n=2a_{n-1}$$
 
 ### `Problema 3`
 > Una permutación $p_1p_2 \dots p_n$ se llama especial si $\forall i = 1 \to n-1$ existe  $j>i$ tal que $|p_i-p_j|=1$. Calcule el número de permutaciones especiales del conjunto $\{1,2,\dots n\}$
@@ -76,7 +96,7 @@ Notemos que el problema se puede dividir en dos momentos disjuntos que su unión
 ### `Solución`
 
 ### `Problema 4`
-> Sea $n \in \Z_+$ encuentre una relación de recurrencia para calcular el número de formas de escribir $n$ como suma ordenada de $\Z_+$ de modo que cada sumando sea mayor o igual que $n$
+> Sea $n \in \Z_+$ encuentre una relación de recurrencia para calcular el número de formas de escribir $n$ como suma ordenada de $\Z_+$ de modo que cada sumando sea mayor o igual que $2$
 
 ### `Solución`
 
@@ -84,6 +104,15 @@ Notemos que el problema se puede dividir en dos momentos disjuntos que su unión
 > Exprese la relación de recurrencia que permite calcular el número de cadenas de longitud $n$ sobre el alfabeto $\{0,1,2\}$ que no contengan $00$ ni $11$
 
 ### `Solución`
+Sea $x_n$ la cantidad de formas válidas con $n$ caracteres y $a_n,b_n,c_n$ la cantidad que empieza con $0,1,2$ respectivamente, entonces se cumplen las siguientes igualdades:
+$$a_n=b_{n-1}+c_{n-1}\\
+  b_n=a_{n-1}+c_{n-1}\\
+  c_n=a_{n-1}+b_{n-1}+c_{n-1}$$
+
+Notemos que $x_n=a_n+b_n+c_n$ y si sustituimos las igualdades anteriores resulta:
+$$x_n=(b_{n-1}+c_{n-1})+(a_{n-1}+c_{n-1})+(a_{n-1}+b_{n-1}+c_{n-1})\\
+x_n=2x_{n-1}+c_{n-1}\\
+x_n=2x_{n-1}+x_{n-2}$$
 
 ### `Problema 6`
 > Encuentre la relación de recurrencia que permite calcular el número de permutaciones de $\{1,2,\dots n\}$ donde ningún elemento está en su posición original

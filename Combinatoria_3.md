@@ -186,5 +186,4 @@ Luego, teniendo en cuenta que $n! = (^n_0)(n-0)!$, por el Principio de I-E resul
 ### `Solución`
 
 ### `Problema 6`
-
-> Una compañía de baile tiene 11 semanas para prepararse para una competencia y decide practicar una vez al día pero no más de 12 veces por semana. Prueba que existe un intervalo de días en que la compañia practica exactamente 21 veces.
+> Una compañía de baile tiene 11 semanas para prepararse para una competencia y decide practicar una vez al día pero no más de 12 veces por semana. Prueba que existe un intervalo de días en que la compañia practica exactamente 21 veces. 
