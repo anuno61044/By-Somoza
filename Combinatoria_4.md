@@ -94,6 +94,9 @@ $$a_n=2a_{n-1}$$
 > Una permutación $p_1p_2 \dots p_n$ se llama especial si $\forall i = 1 \to n-1$ existe  $j>i$ tal que $|p_i-p_j|=1$. Calcule el número de permutaciones especiales del conjunto $\{1,2,\dots n\}$
 
 ### `Solución`
+Probemos que no existe alguna permutación especial que empieze con un número distinto de 1 o $n$. Supongamos que empieza con un cierto $k$, luego, notemos que tampoco puede terminar con 1 o $n$ porque de lo contrario se formaría la permutación decreciente o creciente respectivamente, por lo que tanto 1 como $n$ estarán ubicados en el medio del array, luego, analicemos el caso en que 1 está antes que $n$, delante de él estará 2, luego 3, y así sucesivamente hasta $p$ tal que el próximo número sea $n$, haciendo un análisis parecido, delante de él estará $n-1$ y así sucesivamente hasta $p-1$, pero de esta forma necesariamente cubrimos todos los números, por lo que habríamos repetido el $k$ inicial para no dejar de cumplir la condición, lo cual nos da una contradicción.
+
+Luego, una vez demostrado esto es fácil darse cuenta que la cantidad de permutaciones especiales de tamaño $n$ $a_n$ es equivalente a contar la cantidad de permutaciones $a_{n-1}$ pero colocando delante $n$ o 1, en este último caso le sumamos uno a cada elemento de la permutación especial de $n-1$ elementos y el resultado será una permutación especial de tamaño $n$
 
 ### `Problema 4`
 > Sea $n \in \Z_+$ encuentre una relación de recurrencia para calcular el número de formas de escribir $n$ como suma ordenada de $\Z_+$ de modo que cada sumando sea mayor o igual que $2$

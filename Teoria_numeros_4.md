@@ -1,7 +1,5 @@
 # Teoría de Números 4
 
-## Temas
-
 ## Ejercicios
 
 ### `Problema 1`

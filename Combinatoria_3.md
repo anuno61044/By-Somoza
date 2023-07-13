@@ -186,4 +186,7 @@ Luego, teniendo en cuenta que $n! = (^n_0)(n-0)!$, por el Principio de I-E resul
 ### `Solución`
 
 ### `Problema 6`
-> Una compañía de baile tiene 11 semanas para prepararse para una competencia y decide practicar una vez al día pero no más de 12 veces por semana. Prueba que existe un intervalo de días en que la compañia practica exactamente 21 veces. 
+> Una compañía de baile tiene 11 semanas para prepararse para una competencia y decide practicar una vez al día pero no más de 12 veces por semana. Prueba que existe un intervalo de días en que la compañia practica exactamente 21 veces.
+
+### `Solución`
+Tomemos $A$ una lista de tamaño 77 donde en la posición $i$ tendremos la cantidad total de veces que practicó la compañía hasta el día $i$. Como la compañía entrena al menos una vez al día esa lista $A$ será estrictamente creciente y como cada semana practica a lo más 12 veces, la posición 21 de $A$ será menor o igual que 36, por lo que, si analicemos los primeros 21 días en $A$, entonces entre ellos habrá un múltiplo de 21, en cuyo caso será el propio 21, o dos números que dejen el mismo resto módulo 21, por lo que basta restarlos para que resulte un múltiplo de 21 y en ese intervalo de días la compañía habrá practicado exactamente 21 veces.

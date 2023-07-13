@@ -10,6 +10,9 @@
 7. **Función $\varphi(n)$**
 8. **Orden $a$ módulo $n$**
 9. **Raiz primitiva**
+10. **Ejercicios**
+11. **Otros ejercicios**
+12. **Soluciones otros ejercicios**
 
 ## Teorema de Fermat (demostración)
 Recordemos el Teorema de Fermat:
@@ -257,6 +260,11 @@ Por tanto, si $(n+1)$ es compuesto $mcd(n!+1,(n+1)!) = 1$, de lo contrario $mcd(
 ### `Problema 5`
 > Demuestra que si $n$ es compuesto se cumple que $\varphi(n) \le n - \sqrt{n}$
 
+### `Solución (Alvarito)`
+Notemos que la cantidad de números coprimos con $n$ es $n-m$ siendo $m$ la cantidad de números que no son coprimos con $n$, luego, sustituyendo $\varphi(n)=n-m$ en la expresión resulta que debemos probar que $m \ge \sqrt{n}$.
+
+Sea $p_1$ el menor primo que divide a $n$, luego, todo $q$ desde 1 hasta $\sqrt{n}$ cumple que $p_1q \le n$ entonces al menos hay $\sqrt{n}$ números que no son coprimos con $n$
+
 ### `Problema 6`
 > Sea $p$ primo mayor que 2. Demuestra que todo divisor de $2^p-1$ es de la forma $2kp+1$ con $k \in \Z$
 
@@ -276,3 +284,41 @@ $$2^{pt+1} \equiv 1 \ mod(q)\\
   2^{pt}*2 \equiv 1 \ mod(q)$$
 
 Pero como $2^{pt} \equiv 1 \ mod(q)$ contradicción, por tanto $p$ siempre divide a todo divisor primo $q \implies$ todo divisor de $2^p-1$ es de la forma $2kp+1$ con $k \in \Z$
+
+## Ejercicios Extra
+
+### `Problema 1`
+> Probar que $\frac{1}{2} \sqrt{n} \le \varphi(n) \le n$ para todo $n \in \N$
+
+## Soluciones de ejercicios extra
+
+### `Solución 1`
+Para resolver el ejercicio vamos a apoyarnos en las siguientes desigualdades que podríamos probar fácilmente:
+$$
+p-1 \gt \sqrt{p}\\
+
+$$
+
+Sea $n$ primo $\implies \varphi(n)=n-1$, luego, por las desigualdades anteriores se cumple que:
+$$\frac{1}{2}\sqrt{n} \lt \sqrt{n} \lt n-1 \lt n$$
+
+Supongamos que $n$ no es primo $\implies$
+$$
+n=2^{e_0}p_1^{e_1}\cdots p_k^{e_k}\\
+n=2^{e_0}p_1^{e_1-1}\cdots p_k^{e_k-1}p_1\cdots p_k\\
+\varphi(n)=2^{e_0-1}p_1^{e_1-1}\cdots p_k^{e_k-1}(p_1-1)(p_2-1)\cdots (p_k-1)
+$$
+## $$\frac{1}{2}\sqrt{n}=\frac{1}{2}2^{\frac{e_0}{2}}p_1^{\frac{e_1-1}{2}}\cdots p_k^{\frac{e_k-1}{2}}\sqrt{p_1}\cdots \sqrt{p_k}$$
+
+Luego, démonos cuenta que:
+$$
+\frac{1}{2}2^{\frac{e_0}{2}}=2^{\frac{e_0}{2}-1} \le 2^{e_0-1}\\
+p_1^{\frac{e_1-1}{2}} \le p_1^{e_1-1}\\
+\cdots \\
+p_k^{\frac{e_k-1}{2}} \le p_k^{e_k-1}\\
+\sqrt{p_1} \le (p_1-1)\\
+\cdots \\
+\sqrt{p_k} \le (p_k-1)
+$$
+
+Por tanto si $n$ es compuesto entonces se cumple que: $\frac{1}{2} \sqrt{n} \le \varphi(n) \le n$
